@@ -1,0 +1,22 @@
+
+<ul class="menu-main">
+    <li><a href="/" class="{{.Classind}}">Главная</a></li>
+    {{ if not .is_logged_in }}
+    <li><a href="/user/register" class="{{.Classreg}}">Регистрация</a></li>
+    {{end}}
+    {{ if not .is_logged_in }}
+    <li><a href="/user/login" class="{{.Classavt}}">Авторизация</a></li>
+    {{end}}
+    {{ if .is_logged_in }}
+    <li><a href="/spravochnik/new" class="{{.Classnew}}">Новый</a></li>
+    {{end}}
+    {{ if .is_logged_in }}
+    <li><a href="/spravochnik/upload" class="{{.Classupl}}">Импорт</a></li>
+    {{end}}
+    {{ if .is_logged_in }}
+    <li><a href="/spravochnik/export" class="{{.Classexp}}">Экспорт</a></li>
+    {{end}}
+    {{ if .is_logged_in }}
+    <li><a href="/user/deletecookie">Выход</a></li>
+    {{end}}
+</ul>

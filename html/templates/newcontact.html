@@ -1,0 +1,46 @@
+<!--newcontact.html-->
+
+{{ template "header.html" .}}
+<div class="container-poisc">
+    <div class="card-poisc">
+        <div class="update">
+    <table class="center">
+        <div class="centersH"><h5>{{ if .Message }} {{.Message}} {{end}}</h5></div>
+        {{ if .payload }}
+        <thead><th>Город</th><th>Организация</th><th>Должность</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Телефон</th><th>Email</th><th> Редак-вать </th><th>  Удалить  </th></thead>
+        {{range .payload }}
+        <tr>
+            <form action="/spravochnik/update/{{.ID}}" method="POST">
+                <td class="tables"><input type="text" name="City" value="{{.City}}"></td>
+                <td class="tables"><input type="text" name="Organization" value="{{.Organization}}"></td>
+                <td class="tables"><input type="text" name="Dolgnost" value="{{.Dolgnost}}"></td>
+                <td class="tables"><input type="text" name="FirstName" value="{{.FirstName}}"></td>
+                <td class="tables"><input type="text" name="LastName" value="{{.LastName}}"></td>
+                <td class="tables"><input type="text" name="MiddleName" value="{{.MiddleName}}"></td>
+                <td class="tables"><input type="text" name="Contacts" value="{{.Contacts}}"></td>
+                <td class="tables"><input type="text" name="Email" value="{{.Email}}"></td>
+                <td class="tables"><input type="hidden" name="ID" value="{{.ID}}"><button class="centers">Сохранить</button></form></td>
+            <td class="tables"><form action="/spravochnik/delete/{{.ID}}" method="POST"><input type="hidden" name="ID" value="{{.ID}}"><button class="delete">Удалить</button></form></td>
+        </tr>
+        {{end}}
+        {{else}}
+        <thead><th>Город</th><th>Организация</th><th>Должность</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Телефон</th><th>Email</th><th> Добавить </th></thead>
+        <tr>
+            <form action="/spravochnik/new" method="POST">
+                <td class="tables"><input type="text" name="City" placeholder="Город"></td>
+                <td class="tables"><input type="text" name="Organization" placeholder="Организация"></td>
+                <td class="tables"><input type="text" name="Dolgnost" placeholder="Должность"></td>
+                <td class="tables"><input type="text" name="FirstName"placeholder="Фамилия"></td>
+                <td class="tables"><input type="text" name="LastName" placeholder="Имя"></td>
+                <td class="tables"><input type="text" name="MiddleName" placeholder="Отчество"></td>
+                <td class="tables"><input type="text" name="Contacts" placeholder="Телефон"></td>
+                <td class="tables"><input type="text" name="Email" placeholder="Email"></td>
+                <td class="tables"><input type="hidden" name="New" value="New"><button class="centers">Сохранить</button></form></td>
+        </tr>
+        {{end}}
+    </table>
+       </div>
+    </div>
+</div>
+
+{{ template "footer.html" .}}

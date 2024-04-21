@@ -1,0 +1,17 @@
+<!--upload.html-->
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+<div class="container-poisc">
+    <div class="card-poisc">
+        <div class="update">
+            <h2 class="card-title">Импортируем файл справочника</h2>
+            <div class="centersH"><h5>{{ if .Message }} {{.Message}} {{end}}</h5></div>
+<form class="registration-form-poisc" action="/spravochnik/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file">
+    <button type="submit" class="btn-poisc">Импортировать</button>
+</form>
+        </div>
+    </div>
+</div>
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}
